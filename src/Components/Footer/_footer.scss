@@ -1,0 +1,29 @@
+.footer{
+    position: relative;
+    width: 100%;
+    height: 9rem;
+    overflow: hidden;
+   &__place{
+       position: absolute;
+       width: 100%;
+       height: 100%;
+   } 
+   &__medias{
+       display: flex;
+       max-width: 10rem;
+       margin: 0 auto;
+       justify-content: space-between;
+       height: 10%;
+   }
+   &__bottom{
+    height: 90%;
+    position: relative;
+   }
+
+    &__copyright{
+       position: absolute;
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+    }
+}

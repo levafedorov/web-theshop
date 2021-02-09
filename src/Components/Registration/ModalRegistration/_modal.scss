@@ -1,0 +1,33 @@
+.custom-modal{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 800;
+    top: 0;
+    left:0;
+    background-color: rgba(black, .9);
+    &__box{
+        width: 40rem;
+        height:40rem;
+        background-color:  white; //Test
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    &__off-bar{
+        position: relative;
+        height: 3rem;
+        transition: all .3s;
+        cursor: pointer;
+        span{
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        &:hover{
+            filter: brightness(.9);
+        }
+    }
+}

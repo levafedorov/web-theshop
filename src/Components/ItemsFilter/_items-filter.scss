@@ -1,0 +1,37 @@
+.items-filter{
+    color:rgba(0, 0, 0, 0.438);
+
+
+    &__form{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    
+    input, select{
+        margin-left:1rem;
+        border: none;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.438);
+        background-color:transparent;
+        &:focus{
+           outline-color:rgba(30, 108, 197, 0.849);
+        }
+    }
+
+    &__box{ 
+       white-space: nowrap;
+       padding: .5rem;
+    }
+
+    &__label{
+        margin-left:1rem;
+    }
+
+    &__range{
+       width: 3rem;
+    }
+
+    &__select{
+
+    }
+}

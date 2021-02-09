@@ -1,0 +1,11 @@
+.card{
+    &__add-box{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__price{
+        font-size: 2.5rem;
+    }
+}

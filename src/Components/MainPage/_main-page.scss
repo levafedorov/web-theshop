@@ -1,0 +1,32 @@
+.main-page{
+    min-height: 100vh;
+    position: relative;
+    &__top{
+    }
+    &__bottom{
+        margin-top: -15rem;
+        padding:40px 0;
+        position: relative;
+        z-index: 20;
+    }
+    .cart-mini{
+        position: absolute;
+        top: 0;
+        right:0;
+    }
+}
+
+
+//
+
+
+.main-page .carousel{      
+    &-item{
+        height: 35rem;
+        filter: brightness(.3);
+    }
+    &-indicators{
+        bottom: auto I !important;
+        top:2rem !important; 
+    }
+}
