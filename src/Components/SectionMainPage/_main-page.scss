@@ -4,10 +4,15 @@
     &__top{
     }
     &__bottom{
-        margin-top: -15rem;
         padding:40px 0;
         position: relative;
         z-index: 20;
+        margin-top: -15rem;
+        // background-color: rgb(12, 12, 24);
+        background-image: linear-gradient(to top, white 85%, transparent 100%);
+        .item-place{
+            
+        }
     }
     .cart-mini{
         position: absolute;
@@ -17,13 +22,12 @@
 }
 
 
-//
+//vendor
 
 
 .main-page .carousel{      
     &-item{
-        height: 35rem;
-        filter: brightness(.3);
+        height: 35rem;    
     }
     &-indicators{
         bottom: auto I !important;

@@ -1,0 +1,105 @@
+.section-main-cart{
+    &__table-container{
+    overflow-y: scroll;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    height:35rem;
+        &::-webkit-scrollbar {
+            width: .3rem;
+        }
+        
+        
+        &::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 10px;
+        }
+        
+        &::-webkit-scrollbar-thumb {
+            background: #6c757d;
+            border-radius: 10px;
+        }
+    }
+
+
+    &__table{
+        border:none !important;
+        overflow: scroll;
+    }
+    &__body-td{
+        text-align: right;   
+        text-align: left;
+        border:none !important;
+        &--price{
+            font-weight: 800;
+            font-size:1.6rem;
+            line-height: 1;
+        }
+        &--options{
+            width:10rem;
+        }
+        &--title{
+            width:50%;
+        }
+    }
+    
+    &__body-tr{
+        background-color: transparent !important;
+        border-bottom: 1px solid #6c757d;
+        &:hover{
+            background-color: transparent !important;
+        }
+    }
+
+    &__image-td{
+        text-align: center;
+        border:none !important;
+        img{
+            object-fit: cover;
+        }
+    }
+
+    &__amount{
+        background-color: transparent;
+        width: 3rem;
+        border: none;
+        margin-bottom: 1rem;
+        margin-right: 2rem;
+        &::-webkit-outer-spin-button, &::-webkit-inner-spin-button{  
+            opacity: 1;
+         }
+        
+    }
+
+    &__order{
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+    }
+
+    &__total{
+        display: inline-block;
+        font-size: 2rem;
+        font-weight: 800;
+        text-align: right;
+    }
+  
+    &__headers{
+        width: 100%;
+        display: flex;
+        justify-content:space-between;
+        margin-bottom: 1rem;
+        font-weight: 800;
+        &-title{
+            flex-grow: 3;
+        }
+        &-price{
+          flex-grow: 2;
+        } 
+        &-image{
+            flex-grow: 1;
+        }
+    }
+
+}
+
+

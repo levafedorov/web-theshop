@@ -1,11 +1,28 @@
 .card{
+ 
     &__add-box{
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        @include bottomBar();
+        padding-left: 20px;
+        padding-right: 20px;
     }
+
+    &__image{
+      object-fit: contain;
+      object-position: center;
+    }
+
     &__price{
-        font-size: 2.5rem;
+        font-size: 1.6rem;
     }
+
+
+}
+
+//vendor
+
+.card{
+   &-body{
+       padding-bottom: 3rem  !important;
+       position: relative;
+   }
 }

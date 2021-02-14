@@ -10,35 +10,28 @@ export default function ItemsFilter() {
    const [sort, setSort] = useState("name");
    
    const handleFrom = ({target: {value}}) => {
-    if(value >= 0){
-            setFrom(value);
-            if(to < value){
-                setTo(value);
-             }
+    
+    if(+value >= 0){
+        let output = "0";
+        output = value;
+        if(output.length > 1 && output[0] === "0"){
+            output =  [...output];
+            output.shift();
+            output.join("");
+        }
+            setFrom(output);
     }
+
    }
 
    const handleTo = ({target: {value}}) => {
-        if(value > from){
             setTo(value);
-        }
-     
     } 
 
     return (
         <div className="items-filter p-3 mb-5 bg-light">
             <form action="" className="items-filter__form">
-                <div className="items-filter__box">                
-                        <label className="items-filter__label">
-                           Price from: 
-                            <input type="number" name="rangeFrom" className="items-filter__range" value={from} onChange={handleFrom}/> 
-                        </label>
-                        <label className="items-filter__label">
-                            to:
-                            <input type="number" name="rangeTo" className="items-filter__range" value={to} onChange={handleTo}/> 
-                        </label>
-                </div>
-                <div className="items-filter__box">
+            <div className="items-filter__box">
                     <label className="items-filter__label">
                         Categories:
                       <select 
@@ -54,6 +47,18 @@ export default function ItemsFilter() {
                       </select> 
                     </label>
                </div>
+                <div className="items-filter__box">                
+                        <label className="items-filter__label">
+                           Price from: 
+                            <input type="number" name="rangeFrom" className="items-filter__range" value={from} onChange={handleFrom}/> 
+                            $
+                        </label>
+                        <label className="items-filter__label">
+                            to:
+                            <input type="number" name="rangeTo" className="items-filter__range" value={to} onChange={handleTo}/>
+                            $ 
+                        </label>
+                </div>
                <div className="items-filter__box">
                      <label className="items-filter__label">
                                 Sort by:

@@ -1,0 +1,93 @@
+.section-payment{
+    height: 40rem;
+    &__select-payment{
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    &__options{
+        width: 60%;
+        height: 50%;
+        display: flex;
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%, -50%);
+    }
+    &__label{
+        width:48%;
+        cursor: pointer;
+    }
+
+    &__input{
+        display:none;
+    }
+    
+    &__bg{
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transition: all .3s;
+        &:hover{
+           box-shadow: 0 0 0 .3rem rgba(#f8f9fa, .5);
+        }
+    }
+    &__icon{
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%, -50%);
+    }
+   &__header{
+       text-align: center;
+       font-size: 1.6rem;
+   }
+   &__btn{
+       position: absolute;
+       bottom: 2rem;
+       right: 2rem;
+   }
+
+   &__input:checked + &__bg{
+       background-color: rgba(#f8f9fa, .5);
+   }
+
+   
+   &__finish{
+      width: 100%;
+      height: 100%;
+      
+   }
+
+   &__card-info{
+       font-size: 1.6rem;
+       margin-bottom: 2rem;
+   }
+
+   &__h{
+       margin-bottom: 2rem;
+   }
+    
+   &__items-info{
+       height: 20rem;
+       width: 30rem;
+   }
+
+   &__list{
+       list-style-type:decimal;
+       background-color: blue;
+       padding-left: 2rem;
+       width: 100%;
+       height: 80%;
+       overflow: scroll;
+   }
+   
+   &__list-item{
+     white-space: nowrap;
+     span{display: inline-block;}
+     span:not(:first-child){
+        margin-left:3rem;
+     }
+   }
+}

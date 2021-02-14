@@ -3,13 +3,13 @@
 
 // @import "./Components/abstracts/variables";
 // @import "./Components/abstracts/functions";
-// @import "./Components/abstracts/mixins";
+@import "./Components/abstracts/mixins";
 
 @import "./Components/base/base";
 // @import "./Components/base/typography";
 @import "./Components/base/utilities";
 
-@import "./Components/MainPage/main-page";
+@import "./Components/SectionMainPage/main-page";
 @import "./Components/ItemPlace/item-place";
 @import "./Components/ItemsFilter/items-filter";
 @import "./Components/Footer/footer";
@@ -17,3 +17,9 @@
 @import "./Components/Registration/ModalRegistration/modal";
 @import "./Components/Registration/registration";
 @import "./Components/CartMini/cart-mini";
+@import "./Components/ItemDetails/item-details";
+@import "./Components/Comments/comments";
+@import "./Components/PageBox/page-box";
+@import "./Components/SectionMainCart/section-main-cart";
+@import "./Components/SectionPayment/section-payment";
+@import "./Components/LoadingIcon/loading-icon"
