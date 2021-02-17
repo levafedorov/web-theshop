@@ -1,10 +1,88 @@
-export const getAllItems = () => dispatch => {
-    fetch('https://fakestoreapi.com/products')
-    .then(
-        data => data.json()
-        ).then(
-         items => dispatch({
-            type:"GET_ALL_ITEMS",
-            payload: items
-         }));
+
+export function getSomeItems(category="", sort="?sort=asc", page=1){
+
+    let url = `https://fakestoreapi.com/products${category}${sort}&limit=${3 * page}`;
+    return dispatch => {
+        fetch(url)
+        .then(
+            data => data.json()
+            ).then(
+             items => dispatch({
+                type:"GET_BIT_OF_ITEMS",
+                payload: items
+             }))
+             .catch(err => {
+               console.error(err.message);
+               throw err;
+              });
+    }
+}
+
+
+export const getItem = (id) => dispatch => {
+  fetch(`https://fakestoreapi.com/products/${id}`)
+  .then(
+      data => data.json()
+      ).then(
+       item => dispatch({
+          type:"ITEM_GET",
+          payload: item
+       }))
+       .catch(err => {
+        console.error(err.message);
+        throw err;
+       });
+}
+
+export const clearItem = () => {
+  return {
+    type: "ITEM_CLEAR",
+  }
+}
+
+
+
+export const changeCategory = (category) => {
+     return {
+       type: "CHANGE_CATEGORY",
+       payload: category
+     }
+}
+
+
+export const changeSort = (sort) => {
+  return {
+    type: "CHANGE_SORT",
+    payload: sort
+  }
+}
+
+
+export const changePage = (page) => {
+  return {
+    type: "CHANGE_PAGE",
+    payload: page
+  }
+}
+
+export const clearAllItems = () => {
+  return {
+    type: "CLEAR_ALL_ITEMS",
+  }
+}
+
+
+
+export const setLoading = () => {
+  return {
+    type: "SET_LOADING",
+  }
+}
+
+
+export const regToggler = () => {
+
+  return {
+    type: "REG_OPEN_CLOSE"
+   }
 }

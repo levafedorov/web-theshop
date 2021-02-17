@@ -1,36 +1,49 @@
-import {useState, React} from 'react'
+import {useState, useEffect, React} from 'react'
 import {Button, ButtonGroup} from "react-bootstrap";
+import {useDispatch, useSelector} from "react-redux";
+import {changeCategory, changeSort, changePage} from "../../Redux/actions/itemsActions";
+
 
 
 
 export default function ItemsFilter() {
-   const [from, setFrom] = useState(0);
-   const [to, setTo] = useState(0);
-   const [category, setCategory] = useState("all");
-   const [sort, setSort] = useState("name");
+   const [category, setCategory] = useState("");
+   const [sort, setSort] = useState("?sort=asc");
+   const [categories, setCategories] = useState(null);
+
+   const dispatch = useDispatch();
+   const isCategory = useSelector(state => state.items.category); 
+
+    useEffect(() => {
+        fetch('https://fakestoreapi.com/products/categories')
+        .then((res) => res.json())
+        .then((value) => {
+            setCategories(value);
+        });
+    }, []);
+
+
+
+
    
-   const handleFrom = ({target: {value}}) => {
-    
-    if(+value >= 0){
-        let output = "0";
-        output = value;
-        if(output.length > 1 && output[0] === "0"){
-            output =  [...output];
-            output.shift();
-            output.join("");
-        }
-            setFrom(output);
+    const handleCategory = ({target: {value}}) => {
+            setCategory(value)
     }
 
-   }
 
-   const handleTo = ({target: {value}}) => {
-            setTo(value);
-    } 
+    const onSubmit = (e) => {
+        e.preventDefault();
+            dispatch(changeCategory(category));
+            dispatch(changeSort(sort));
+            dispatch(changePage(2));
+    }
+    
+   
+
 
     return (
         <div className="items-filter p-3 mb-5 bg-light">
-            <form action="" className="items-filter__form">
+            <form action="" className="items-filter__form" onSubmit={onSubmit}>
             <div className="items-filter__box">
                     <label className="items-filter__label">
                         Categories:
@@ -38,27 +51,21 @@ export default function ItemsFilter() {
                       name="category" 
                       id="filter-category" 
                       className="items-filter__select"
-                      value={category} onChange={({target:{value}}) => setCategory(value)}>
-                         <option value="all">all</option>
-                         <option value="electronics">electronics</option>    
+                      value={category} onChange={handleCategory}>
+                         <option value="">all</option>
+                         { categories ? 
+                           categories.map(
+                             (item, i) => <option value={`/category/${encodeURIComponent(item)}`} key={`key-${i}`}>{item}</option>
+                             ):
+                           null  
+                        }
+                         {/* <option value="electronics">electronics</option>    
                          <option value="jewelery">jewelery</option>
                          <option value="men clothing">men clothing</option>
-                         <option value="women clothing">women clothing</option>
+                         <option value="women clothing">women clothing</option> */}
                       </select> 
                     </label>
                </div>
-                <div className="items-filter__box">                
-                        <label className="items-filter__label">
-                           Price from: 
-                            <input type="number" name="rangeFrom" className="items-filter__range" value={from} onChange={handleFrom}/> 
-                            $
-                        </label>
-                        <label className="items-filter__label">
-                            to:
-                            <input type="number" name="rangeTo" className="items-filter__range" value={to} onChange={handleTo}/>
-                            $ 
-                        </label>
-                </div>
                <div className="items-filter__box">
                      <label className="items-filter__label">
                                 Sort by:
@@ -67,14 +74,16 @@ export default function ItemsFilter() {
                             id="sort-by" 
                             className="items-filter__select"
                             value={sort} onChange={({target:{value}}) => setSort(value)}
-                            >
-                                <option value="name">name</option>
-                                <option value="price">price</option>
+                            >   
+                                <option value="?sort=asc">unsorted</option>
+                                <option value="?sort=desc">description</option>
+                                <option value="?sort=lowest">lowest price</option>
+                                <option value="?sort=highest">highest price</option>
                             </select> 
                       </label>
                   </div>
                   <ButtonGroup toggle className="items-filter__box">
-                    <Button variant="secondary">Start</Button>
+                    <Button variant="secondary" type="submit">Start</Button>
                   </ButtonGroup>
             </form>
         </div>    

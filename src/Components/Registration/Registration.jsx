@@ -13,7 +13,7 @@ export default function Registration({sendData, resError}) {
       const [adress, setAdress] = useState("qwery");
       const [postCode, setPostCode] = useState("123");
       const [town, setTown] = useState("qwery");
-      const [state, setState] = useState("qwerty");
+      const [state, setState] = useState("");
       const [province, setProvince] = useState("qweewt");
       const [cardNumber, setCardNumber] = useState("");
       const [cardDate, setCardDate] = useState("");
@@ -22,6 +22,9 @@ export default function Registration({sendData, resError}) {
 
       //STEP 1
         //email //fullname //company //address //postal code // town //state //province
+
+     
+
 
      const nextStep = () => {
          if(fullName && postCode && adress && town){

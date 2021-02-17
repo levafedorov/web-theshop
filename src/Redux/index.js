@@ -3,8 +3,17 @@ import {createStore, applyMiddleware, compose} from "redux";
 import thunk from "redux-thunk";
 
 const initialState = {
+   items: {
     items: [],
-    
+    item: undefined,
+    category: "",
+    sort: "?sort=asc",
+    page: 1
+   },
+   general: {
+       loading: false,
+       reg:false
+    }  
 }
 
 

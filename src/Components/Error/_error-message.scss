@@ -1,0 +1,14 @@
+.error-message{
+    position: absolute;
+    z-index: 500000;
+    top:10rem;
+    left: 10rem;
+    max-width: 25rem;
+    a{   
+        color: white;
+        &:hover{
+            color: white;
+            text-decoration: none;}
+        
+    }
+}

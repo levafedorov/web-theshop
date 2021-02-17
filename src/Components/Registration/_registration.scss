@@ -5,6 +5,7 @@
         width: 100%;
         height: 100%;
         overflow: hidden;
+        position: relative;
     }
 
     &__inputs{
@@ -28,12 +29,8 @@
    &__steps{
        margin-bottom: 1rem;
    }
-}
-
-
-//CHANGE OF VENDOR CODE
-
-#cvc{
-    display: none;
+   input{
+       cursor: pointer;
+   }
 }
 

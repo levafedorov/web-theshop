@@ -10,5 +10,13 @@
         gap:1.5rem;
         box-shadow: 0 0 .5rem 0px rgba(black, .5);
         position: relative;
+        padding-bottom: 6rem;
     }
+
+   &__more-btn{
+       position: absolute;
+       bottom: 2rem;
+       left: 50%;
+       transform: translateX(-50%);
+   }
 }

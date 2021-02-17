@@ -1,8 +1,9 @@
 import React from 'react'
 import {Card, Button, ButtonGroup} from "react-bootstrap";
 import {cutString} from "../../functions/functions";
+import {Link} from "react-router-dom";
 
-export default function Item({title, price, description, image}) {
+export default function Item({title, price, description, image, id}) {
     return (
             <Card>
                 <Card.Img variant="top" src={image} height="400" className="card__image"/>
@@ -13,7 +14,9 @@ export default function Item({title, price, description, image}) {
                         </Card.Text>
                         <div className="card__add-box">
                           <ButtonGroup>
-                            <Button variant="secondary">To item</Button>  
+                          <Link to={`/item/${id}`}>
+                            <Button variant="secondary">To item</Button> 
+                          </Link>  
                             <Button variant="secondary">Add to cart</Button>  
                           </ButtonGroup>           
                             <div className="card__price text-primary">{price}$</div>

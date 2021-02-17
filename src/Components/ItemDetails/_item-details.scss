@@ -3,6 +3,8 @@
         margin-top: 10rem;
         display: flex;
         box-shadow: 0 0 .5rem 0 rgba(black, .5);
+        min-height: 20rem;
+        position: relative;
         &-left{
          flex-basis: 30rem;
         }
@@ -25,7 +27,7 @@
     &__image{
         height: 100%;
         width: 100%;
-        object-fit: cover;
+        object-fit: contain;
         object-position: center;
     }
     
@@ -71,6 +73,9 @@
     }
 
     &__bottom{
+        position: relative;
+        min-height: 10rem;
+        box-shadow: 0 0 .5rem 0 rgba(black, .5);
         margin-top: 5rem;
         min-height: 20rem;
     }

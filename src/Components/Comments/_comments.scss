@@ -1,6 +1,5 @@
 .comments{
     padding: 2rem;
-    box-shadow: 0 0 .5rem 0 rgba(black, .5);
     margin-bottom: 2rem;
     &__comment{
       width: 100%;
@@ -71,6 +70,14 @@
 
     &__likedislike-label{
       cursor: pointer;
+      transition: all .3s;
+      width: 2.5rem;
+      height: 2.5rem;
+      position: relative;
+      border-radius: 50%;
+      svg{
+        @include centerer()
+      }
       &:not(:first-child){
         margin-left:.5rem;
       }

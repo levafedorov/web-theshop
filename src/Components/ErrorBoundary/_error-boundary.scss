@@ -1,0 +1,16 @@
+
+
+.error-boundary{
+    .error-message{
+        @include centerer();
+    }
+    &__top{
+        margin-top: 10rem;
+        margin-bottom: 10rem;
+        display: flex;
+        box-shadow: 0 0 .5rem 0 rgba(black, .5);
+        min-height: 50rem;
+        position: relative;
+    }
+      
+}
