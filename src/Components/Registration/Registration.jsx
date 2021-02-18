@@ -1,44 +1,64 @@
-import {useState} from 'react';
+import {useState, useRef} from 'react';
 import React from 'react';
 import Step1 from './Step1';
 import Step2 from './Step2';
-
+import {formatCheck} from "../../functions/functions";
+import ErrorMessage from "../Error/ErrorMessage";
 
 export default function Registration({sendData, resError}) {
       const [step, setStep] = useState(1);
-      const [error, setError] = useState(false);
-      const [email, setEmail] = useState("asdasd@asd");
-      const [fullName, setFullName] = useState("qwey");
-      const [company, setCompany] = useState("qwery");
-      const [adress, setAdress] = useState("qwery");
-      const [postCode, setPostCode] = useState("123");
-      const [town, setTown] = useState("qwery");
+      const [error, setError] = useState("");
+      const [email, setEmail] = useState("");
+      const [fullName, setFullName] = useState("");
+      const [company, setCompany] = useState("");
+      const [adress, setAdress] = useState("");
+      const [postCode, setPostCode] = useState("");
+      const [town, setTown] = useState("");
       const [state, setState] = useState("");
-      const [province, setProvince] = useState("qweewt");
+      const [province, setProvince] = useState("");
       const [cardNumber, setCardNumber] = useState("");
       const [cardDate, setCardDate] = useState("");
       const [cardName, setCardName] = useState("");
+      const [password, setPassword] = useState("");
+      const [nickName, setNikName] = useState("");
+      const [checkPassword, setCheckPassword] = useState("");
+    
+    const intervalRef = useRef();  
 
-
-      //STEP 1
-        //email //fullname //company //address //postal code // town //state //province
-
-     
+    const errorHandler = (message) => {
+        setError(message);
+        clearTimeout(intervalRef.current);
+        intervalRef.current = setTimeout(() => {
+         setError("");
+        }, 8000);
+    }
 
 
      const nextStep = () => {
-         if(fullName && postCode && adress && town){
+         if(!state || !province){
+            errorHandler("Fill all required fields*");
+         }else{
             setStep(2);
-         }
+         }  
      }
+
 
      const prevStep = () => {
         setStep(1);
      }
 
+    
+
+
      const toComplete = () => {
-         const data = {
-            step,
+     const isValidCardName = 
+      formatCheck(cardName, "(?:^[A-ZĚŠČŘŽÝÁÍÉÚŮ][a-z+ěščřžýáíéúů]+\\s)(?:[A-Z][a-z]+\\s)*");
+     if(isValidCardName instanceof Error){ 
+        errorHandler("Name on card is incorrect or missing*"); 
+      }else if(checkPassword !== password || password === ""){
+         errorHandler("Password is empty or password and check password don't match");
+      }else{
+         const dataUser = {
             email,
             fullName,
             company,
@@ -46,18 +66,20 @@ export default function Registration({sendData, resError}) {
             postCode,
             town,
             state,
-            province,}
-          
-          sendData({})
+            province,
+            password,
+            nickName
+          }
+
+          const dataCard = {cardNumber,
+                              cardDate,
+                              cardName,}
+
+          sendData({dataUser, dataCard});
+       }
+        
      }
 
-     
-     const errorMessage = 
-     resError || error ? 
-     <div className="reg__error">
-        { resError || error}
-     </div> :
-      null
 
 
       const step1 = {
@@ -75,7 +97,9 @@ export default function Registration({sendData, resError}) {
       const step2 = {
         cardNumber : {cardNumber, setCardNumber},
         cardDate : {cardDate, setCardDate},
-        cardName: {cardName, setCardName}
+        cardName: {cardName, setCardName},
+        password: {password, setPassword, checkPassword, setCheckPassword},
+        nikName: {nickName, setNikName}
       }
       
     
@@ -92,11 +116,14 @@ export default function Registration({sendData, resError}) {
         default:
             displayedStep = null;
     }
+
+   const isError = error ? <ErrorMessage userMessage={error}/> : null;
+
    
     return (
         <section className="reg">
              {displayedStep}
-             <errorMessage />
+             {isError}
         </section>
     )
 }

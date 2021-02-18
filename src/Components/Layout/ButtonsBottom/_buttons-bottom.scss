@@ -1,21 +1,22 @@
 .buttons-bottom-layout{
     position: absolute;
     bottom: 2rem;
+    left:0;
     width: 100%;
     padding:0 1rem;
+    display: flex;
+    align-items: center;
 
     &--one{
-
+        justify-content: flex-end;  
     }
     &--two{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        justify-content: space-between;  
     }
     &__left{
-      
+      flex-basis: 5rem;
     }
-    &_right{
+    &__right{
 
     }
 }

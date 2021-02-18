@@ -1,4 +1,4 @@
-import {cutString, numberInput, getManager} from "./functions";
+import {cutString, numberInput, formatCheck} from "./functions";
 
 describe("cutString", () => {
     const testString = "Today was a wonderful day. We watched a move with my friends"
@@ -47,18 +47,16 @@ describe("numberInput", () => {
     });
 });
 
-
-describe("getManager", () => {
+describe("formatCheck", () => {
+    const pattern = "(?:^[A-ZĚŠČŘŽÝÁÍÉÚŮ][a-z+ěščřžýáíéúů]+\\s)(?:[A-Z][a-z]+\\s)*"//Full Name
     test("positive", () => {
-       expect(getManager()).toBe(`https://fakestoreapi.com/products?limit=9`);
-       expect(getManager()).toBe(`https://fakestoreapi.com/products?limit=18`);
-       expect(getManager({category:"somecategory"})).toBe(`https://fakestoreapi.com/products/category/somecategory?limit=9`);
-       expect(getManager()).toBe(`https://fakestoreapi.com/products/category/somecategory?limit=18`);
-       expect(getManager({category:"somecategory", sort:"title"})).toBe(`https://fakestoreapi.com/products/category/somecategory?sort=title&limit=18`);
+       expect(formatCheck("This Format", pattern)).toBe("This Format");
+       expect(formatCheck("  This Format ", pattern)).toBe("This Format");
+       expect(formatCheck("  This This Format ", pattern)).toBe("This This Format");
     });
     test("negative", () => {
-      expect(getManager({})).toBeInstanceOf(Error);
-      expect(getManager({tord:"sad"})).toBeInstanceOf(Error);
-      expect(getManager({sort: 123, category: Infinity})).toBeInstanceOf(Error);
+       expect(formatCheck("  This2 This32Format ", pattern)).toBeInstanceOf(Error);
+       expect(formatCheck(" ", pattern)).toBeInstanceOf(Error);
+       expect(formatCheck("this This form", pattern)).toBeInstanceOf(Error);
     });
 });

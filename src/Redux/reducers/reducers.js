@@ -58,6 +58,28 @@ const itemsReducer = (state = initialItemsReducer, action) => {
     }
 }
 
+
+const initialUserReducer =  null;
+  
+
+ const userReducer = (state = initialUserReducer, action) => {
+        switch(action.type){
+           case "USER_LOGIN":
+               return {
+                 ...action.payload
+               }
+               
+           case "USER_LOGOUT":
+               return null
+
+           default: return state; 
+        }
+   }
+
+
+
+
+
 const initialGeneralReducer = {
     loading: false,
     reg:false                          
@@ -82,7 +104,12 @@ const generalReducer = (state = initialGeneralReducer, action) => {
 }
 
 
+
+
+
+
 export default combineReducers({
     items: itemsReducer,
+    user: userReducer,
     general: generalReducer
 });

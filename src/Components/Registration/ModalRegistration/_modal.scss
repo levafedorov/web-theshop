@@ -30,4 +30,9 @@
             filter: brightness(.9);
         }
     }
+
+    &__registred-text{
+        font-size: 2.5rem;
+        @include centerer();
+    }
 }

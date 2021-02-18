@@ -2,6 +2,7 @@ import React from 'react';
 import Comment from "./Comment";
 import AddComment from "./AddComment";
 import {useState} from "react";
+import {useSelector} from "react-redux";
 
 export default function Comments() {
     
@@ -35,10 +36,11 @@ export default function Comments() {
     setComments(arr);
   }
 
-
+  const itemInfo = useSelector(state => state.user); 
+  console.log(itemInfo);
     return (
         <section className="comments">
-            <AddComment handleComment={handleComment}/>
+            {itemInfo  ? <AddComment handleComment={handleComment} nick={itemInfo.nickName}/> : null}
             <div className="comments__displayed">
                 {comments.map(({name, date, text, sympathy}, i) => <Comment key={`key-${i}`} name={name} date={date} text={text} sympathy={sympathy}/>)}
             </div>

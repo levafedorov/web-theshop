@@ -29,7 +29,6 @@ import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-countr
            <CountryDropdown
             value={country}
             onChange={(val) => selectCountry(val)} 
-            require={true}
             />
             </Form.Group>
             <Form.Group controlId="formGroupRegion" className="reg__group">
@@ -40,7 +39,6 @@ import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-countr
             country={country}
             value={region}
             onChange={(val) => selectRegion(val)} 
-            require={true}
             />
             </Form.Group>
         </>

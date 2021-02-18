@@ -34,6 +34,22 @@ export const getItem = (id) => dispatch => {
        });
 }
 
+
+  export const unLogged = () => {
+  return {
+          type: "USER_LOGOUT",
+      }
+  }
+
+ 
+  export const login = (data) => {
+    return {
+            type: "USER_LOGIN",
+            payload: data
+        }
+    }
+
+
 export const clearItem = () => {
   return {
     type: "ITEM_CLEAR",

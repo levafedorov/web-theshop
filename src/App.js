@@ -3,7 +3,6 @@ import "./main.scss";
 import AOS from 'aos';
 import 'aos/dist/aos.css'; 
 import 'bootstrap/dist/css/bootstrap.css'; 
-import 'react-bootstrap-country-select/dist/react-bootstrap-country-select.css';
 import Header from "./Components/Header/Header";
 import MainPage from "./Components/SectionMainPage/MainPage";
 import Footer from "./Components/Footer/Footer";
@@ -75,9 +74,9 @@ function App() {
         {/* <PageBox>
           <SectionPayment />
         </PageBox> */}
-        </Router>
         <Footer />
        {isReg}
+       </Router>
     </div>
   );
 }

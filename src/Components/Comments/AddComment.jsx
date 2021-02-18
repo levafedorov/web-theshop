@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {useState} from 'react';
 
 
-export default function AddComment({handleComment}) {
+export default function AddComment({handleComment, nick}) {
 
     const [sympathy, setSympathy] = useState(null);
     const [text, setText] = useState("");
@@ -24,7 +24,7 @@ export default function AddComment({handleComment}) {
           sympathy, 
           text: newText, 
           date: new Date().toDateString(), 
-          name: "User"}
+          name: nick}
           );
           setSympathy(null);
           setText("");

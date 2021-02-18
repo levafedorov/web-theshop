@@ -22,4 +22,6 @@ export default function ErrorMessage({userMessage, errorMessage, url}) {
 
 ErrorMessage.defaultProps = {
     userMessage: "default error message",
+    errorMessage: "default error message",
+    url:""
 }

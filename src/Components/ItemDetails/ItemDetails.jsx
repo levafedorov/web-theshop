@@ -13,14 +13,13 @@ import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
  function ItemDetails({match}){
     const dispatch = useDispatch();
    
-    console.log(match.params.id);
 
     useEffect(() => {
         dispatch(clearItem());
         dispatch(getItem(match.params.id))
     }, []);
    
-    const itemInfo = useSelector(state => state.items.item, );
+    const itemInfo = useSelector(state => state.items.item);
 
     return (
         <section className="item-details">

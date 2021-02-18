@@ -29,8 +29,27 @@
    &__steps{
        margin-bottom: 1rem;
    }
+   
+   &__password-container{
+       position: relative;
+   }
+
+   &__password-indicator{
+       width: 1rem;
+       height: 1rem;
+       display: inline-block;
+       background-color: #007bff;
+       border-radius: 50%;
+       position: absolute;
+       right: 1rem;
+       top: 2.7rem;
+   }
    input{
        cursor: pointer;
+   }
+   .error-message{
+       top:0;
+       left:0;
    }
 }
 

@@ -2,6 +2,9 @@ import reducers from "./reducers/reducers";
 import {createStore, applyMiddleware, compose} from "redux";
 import thunk from "redux-thunk";
 
+
+
+
 const initialState = {
    items: {
     items: [],
@@ -13,7 +16,7 @@ const initialState = {
    general: {
        loading: false,
        reg:false
-    }  
+    },  
 }
 
 

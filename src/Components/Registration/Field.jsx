@@ -6,7 +6,7 @@ export default function Field({name, type, fn, required, value}) {
     
 
     return (
-        <Form.Group controlId="formGroupPassword" className="reg__group">
+        <Form.Group controlId={`formGroup${name.replace(/\s/g, "")}`} className="reg__group">
                 <Form.Label>
                     {`${required ? "*" : ""}`}
                     <span className="name">
