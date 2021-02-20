@@ -61,7 +61,7 @@ export default function Header() {
     
     if(userInfo){
       displayed = <Logout nikName={userInfo.nickName} setUnlogged={setUnlogged}/>
-    }else if(storedUser){
+    }else{
       displayed = (
         <Login setLogin={setLogin} 
         setPassword={setPassword} 

@@ -12,6 +12,7 @@
         box-shadow: 0 0 .3rem rgba(black, .5);
         transition: all .3s;
         border: none;
+        background-color: #f8f9fa;
         &:hover{
             box-shadow: 0 0 .3rem rgba(#007bff, .5);
         }
@@ -32,7 +33,7 @@
        justify-content: space-between;
        align-items: center;
        width: 75%;
-       padding: 0 1rem;
+       padding: 0 .5rem;
     }
     &__sum{
         font-size: 2rem;

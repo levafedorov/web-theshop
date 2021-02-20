@@ -31,3 +31,4 @@ export const formatCheck = (str, pattern) => {
     const isValid = new RegExp(pattern, "g").test(str);
     return isValid === true ? str : new Error("Wrong format");
 }
+

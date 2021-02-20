@@ -8,9 +8,10 @@ import {useDispatch, useSelector, shallowEqual} from "react-redux";
 import LoadingIcon from "../LoadingIcon/LoadingIcon";
 import {clearItem, getItem} from "../../Redux/actions/itemsActions";
 import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
+import ItemDetailsHOC from "../HOC/AddToCartHOC";
+import CartMini from "../CartMini/CartMini";
 
-
- function ItemDetails({match}){
+ function ItemDetails({match, addToCartHandler, title, description, price, id, image}){
     const dispatch = useDispatch();
    
 
@@ -18,34 +19,34 @@ import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
         dispatch(clearItem());
         dispatch(getItem(match.params.id))
     }, []);
-   
-    const itemInfo = useSelector(state => state.items.item);
+
 
     return (
         <section className="item-details">
+            <CartMini />
             <Container>
                 <div className="item-details__top">
-                  {itemInfo === undefined ? <LoadingIcon /> :
+                  {id === undefined ? <LoadingIcon /> :
                     <>
                     <div className="item-details__top-left">
                    <div className="item-details__image-box">
-                       <img src={itemInfo.image} alt="image" className="item-details__image"/>
+                       <img src={image} alt="image" className="item-details__image"/>
                   </div>
                   <div className="item-details__item-bar">
-                      <h2 className="item-details__items-name bg-dark text-white">{itemInfo.title}</h2>
+                      <h2 className="item-details__items-name bg-dark text-white">{title}</h2>
                        <div className="item-details__add-and-price bg-light">
-                          <div className="item-details__price text-primary">{itemInfo.price}$</div>
-                          <Button variant="secondary" className="item-details__buy-btn">Add to cart</Button>
+                          <div className="item-details__price text-primary">{price}$</div>
+                          <Button variant="secondary" className="item-details__buy-btn" onClick={addToCartHandler}>Add to cart</Button>
                        </div>
                   </div>
                 </div>
                 <div className="item-details__top-right">
                     <article className="item-details__info-content">
                         <h2 className="item-details__info-header">
-                        {itemInfo.title}
+                        {title}
                         </h2>
                         <p className="item-details__p">
-                           {itemInfo.description}
+                           {description}
                         </p>
                     </article>
                     <ItemRating />
@@ -56,7 +57,7 @@ import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
             </Container>
             <Container>
                 <div className="item-details__bottom">
-                {itemInfo === undefined ? <LoadingIcon /> : <Comments />}
+                {id === undefined ? <LoadingIcon /> : <Comments />}
                 </div>
             </Container>
             <ScrollToTop />
@@ -65,7 +66,21 @@ import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 }
 
 
+ItemDetails.propsDefault = { 
+    addToCartHandler: () => console.log("default function"), 
+    title:"", 
+    description:"", 
+    price:0, 
+    id:0, 
+    image:""
+}
+
 
 export default function ItemDetailsWithErrorHandler(props){
-    return <ErrorBoundary url={props.match.url}><ItemDetails {...props} /></ErrorBoundary>
+
+    const itemInfo = useSelector(state => state.items.item);
+
+    return <ErrorBoundary url={props.match.url}>
+           <ItemDetailsHOC wrapped={ItemDetails} {...props} {...itemInfo}></ItemDetailsHOC>  
+        </ErrorBoundary>
 }

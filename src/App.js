@@ -14,7 +14,7 @@ import SectionPayment from "./Components/SectionPayment/SectionPayment";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faHeart, faHeartBroken } from '@fortawesome/free-solid-svg-icons';
 import {useDispatch, useSelector, shallowEqual} from "react-redux";
-import {getSomeItems, clearAllItems} from "./Redux/actions/itemsActions";
+import {getSomeItems, clearAllItems, addItemToCart} from "./Redux/actions/itemsActions";
 import {Switch, BrowserRouter as Router, Route} from "react-router-dom";
 import ErrorMessage from "./Components/Error/ErrorMessage";
 
@@ -46,6 +46,13 @@ function App() {
       dispatch(clearAllItems());
     }, [category, sort]);
 
+    
+    useEffect(() => {
+      const cart = JSON.parse(localStorage.getItem("cart"));
+      if(cart !== null){
+        dispatch(addItemToCart(cart));
+      }
+    });
 
 
   const isReg = 
@@ -66,11 +73,9 @@ function App() {
         <Header />
           <Switch>
             <Route path="/" exact component={MainPage} />
-            <Route path="/item/:id" component={ItemDetailsWithErrorHandler} />    
+            <Route path="/item/:id" component={ItemDetailsWithErrorHandler} />
+            <Route path="/cart" component={SectionMainCart} />      
           </Switch>
-          {/* <PageBox>
-            <SectionMainCart/>
-          </PageBox> */}
         {/* <PageBox>
           <SectionPayment />
         </PageBox> */}

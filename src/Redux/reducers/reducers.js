@@ -105,11 +105,27 @@ const generalReducer = (state = initialGeneralReducer, action) => {
 
 
 
+const initialCart = null;
+
+const cartReducer = (state = initialCart, action) => {
+     switch(action.type){
+       case "ADD_ITEM_TO_CART":
+           return{
+              ...action.payload
+           }
+       case "CLEAR_CART":
+            return null
+        default: return state; 
+     }
+     
+}
+
 
 
 
 export default combineReducers({
     items: itemsReducer,
     user: userReducer,
-    general: generalReducer
+    cart: cartReducer,
+    general: generalReducer,
 });

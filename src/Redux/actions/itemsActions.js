@@ -97,8 +97,22 @@ export const setLoading = () => {
 
 
 export const regToggler = () => {
-
   return {
     type: "REG_OPEN_CLOSE"
    }
+}
+
+
+export const addItemToCart = (item) => {
+   return {
+     type: "ADD_ITEM_TO_CART",
+     payload: item 
+   }
+}
+
+
+export const clearCart = () => {
+  return {
+    type: "CLEAR_CART",
+  }
 }

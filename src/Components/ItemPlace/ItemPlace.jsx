@@ -6,7 +6,7 @@ import Item from "../Card/Card";
 import {useSelector, shallowEqual} from "react-redux";
 import LoadingIcon from "../LoadingIcon/LoadingIcon";
 import {changePage} from "../../Redux/actions/itemsActions";
-
+import HOCItem from "../HOC/AddToCartHOC";
 
 export default function ItemPlace() {
     
@@ -31,7 +31,7 @@ export default function ItemPlace() {
       }
       
       displayed = items.map(
-        ({title, price, description, image, id}, i) => <Item key={`key-${i}`} title={title} price={price} description={description} image={image} id={id}/>
+        ({title, price, description, image, id}, i) => <HOCItem wrapped={Item} key={`key-${i}`} title={title} price={price} description={description} image={image} id={id}/>
       );
        
     }else{
