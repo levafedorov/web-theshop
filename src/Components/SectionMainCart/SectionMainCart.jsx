@@ -43,8 +43,8 @@ export default function SectionMainCart(){
 
        if(type === "count" && value !== undefined){
           newPieces = piecesDown + +value;
-          newSum = +(sumDown + value * operatedItem.price).toFixed(2);
-          operatedItem.amount = value; 
+          newSum = +(sumDown + +value * operatedItem.price).toFixed(2);
+          operatedItem.amount = value === "" ? "" : +value; 
        }else if(type === "remove"){
           newSum = +(sumDown).toFixed(2);
           newPieces = piecesDown;
