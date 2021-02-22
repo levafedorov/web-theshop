@@ -8,6 +8,7 @@
     background-color: rgba(black, .9);
     &__box{
         width: 40rem;
+        min-height: 34rem;
         overflow-y: scroll;
         background-color:  white; //Test
         position: absolute;
