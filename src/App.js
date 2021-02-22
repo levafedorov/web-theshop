@@ -8,15 +8,15 @@ import MainPage from "./Components/SectionMainPage/MainPage";
 import Footer from "./Components/Footer/Footer";
 import ModalRegistration from "./Components/Registration/ModalRegistration/ModalRegistration";
 import ItemDetailsWithErrorHandler from "./Components/ItemDetails/ItemDetails";
-import PageBox from "./Components/PageBox/PageBox";
 import SectionMainCart from "./Components/SectionMainCart/SectionMainCart";
-import SectionPayment from "./Components/SectionPayment/SectionPayment";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faHeart, faHeartBroken } from '@fortawesome/free-solid-svg-icons';
 import {useDispatch, useSelector, shallowEqual} from "react-redux";
 import {getSomeItems, clearAllItems, addItemToCart} from "./Redux/actions/itemsActions";
-import {Switch, BrowserRouter as Router, Route} from "react-router-dom";
+import {Switch, BrowserRouter as Router, Route, Redirect} from "react-router-dom";
 import ErrorMessage from "./Components/Error/ErrorMessage";
+import Contacts from "./Components/SectionContacts/Contacts";
+import AboutUs from "./Components/SectionAboutUs/AboutUs";
 
 
 library.add(faHeart, faHeartBroken);
@@ -74,11 +74,12 @@ function App() {
           <Switch>
             <Route path="/" exact component={MainPage} />
             <Route path="/item/:id" component={ItemDetailsWithErrorHandler} />
-            <Route path="/cart" component={SectionMainCart} />      
+            <Route path="/cart" component={SectionMainCart} />  
+            <Route path="/contacts" component={Contacts} />
+            <Route path="/aboutus"  component={AboutUs} />
+            <Redirect from='*' to='/' />   
           </Switch>
-        {/* <PageBox>
-          <SectionPayment />
-        </PageBox> */}
+  
         <Footer />
        {isReg}
        </Router>

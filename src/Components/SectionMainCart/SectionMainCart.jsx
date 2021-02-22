@@ -1,15 +1,20 @@
-import {React, useState, useEffect} from 'react';
+import {React, useState, useEffect, useRef} from 'react';
 import {Table, Button} from 'react-bootstrap';
 import PageBox from '../PageBox/PageBox';
-import {useSelector, shallowEqual} from "react-redux";
+import {useSelector, shallowEqual, useDispatch} from "react-redux";
+import {clearCart, addItemToCart} from "../../Redux/actions/itemsActions";
 import LoadingIcon from "../LoadingIcon/LoadingIcon";
 import {numberInput} from "../../functions/functions";
+import Finish from "../Finish/Finish";
 
 export default function SectionMainCart(){
    const [items, setItems] = useState(null);
    const [sum, setSum] = useState(0);
    const [pieces, setPiesces] = useState(0);
-    
+   const [finish, setFinish] = useState(false);
+   const dispatch = useDispatch();    
+   const timeId = useRef();
+
    const cartFromStorage = useSelector(state => state.cart, shallowEqual);
 
    useEffect(() => {
@@ -18,6 +23,8 @@ export default function SectionMainCart(){
         setItems(items);
         setPiesces(pieces);
         setSum(sum);
+       }else{
+        setItems([]); 
        }    
    }, [cartFromStorage]);
    
@@ -25,34 +32,60 @@ export default function SectionMainCart(){
    const changeHandler = ({target}) => {
        let {value, dataset:{id, type}} = target;
        value = numberInput(value);
-       console.log("value", value);
        const itemsCopy = [...items];
        const itemIndex = itemsCopy.findIndex(item => item.id == id);
        const operatedItem = itemsCopy[itemIndex];
+       let newPieces = pieces;
+       let newSum = sum;
 
        const sumDown = sum - operatedItem.price * operatedItem.amount;
        const piecesDown = pieces - operatedItem.amount;
 
        if(type === "count" && value !== undefined){
-          setPiesces(piecesDown + +value);
-          const newSum = +(sumDown + value * operatedItem.price).toFixed(2);
-          setSum(newSum);
-          operatedItem.amount = +value;
+          newPieces = piecesDown + +value;
+          newSum = +(sumDown + value * operatedItem.price).toFixed(2);
+          operatedItem.amount = value; 
        }else if(type === "remove"){
-          setSum( +(sumDown).toFixed(2) );
-          setPiesces(piecesDown);
+          newSum = +(sumDown).toFixed(2);
+          newPieces = piecesDown;
           itemsCopy.splice(itemIndex, 1);
        }else{
            return;
        }
+
+       const newItems = {
+           items: itemsCopy,
+           sum: newSum,
+           pieces: newPieces
+       }
        
-       setItems(itemsCopy);
+       dispatch(addItemToCart(newItems));
+       localStorage.setItem("cart", JSON.stringify(newItems));
+    //    setItems(itemsCopy);
+    //    setPiesces(newPieces);
+    //    setSum(newSum);
    }
+
+
+   const orderHandler = () => {
+       if(items.length === 0) return;
+        setFinish(true);
+        clearTimeout(timeId.current);
+        timeId.current = setTimeout(() => {
+            localStorage.removeItem("cart");
+            dispatch(clearCart());
+            window.location.replace('/');
+        }, 2000);
+           
+   } 
   
-   
+//    Finish
+// finish
    
     return (
         <PageBox>
+        {finish ? 
+        <Finish /> :
         <section className="section-main-cart">
             <div className="section-main-cart__headers">
                 <div className="section-main-cart__headers-image">Image</div>
@@ -69,7 +102,7 @@ export default function SectionMainCart(){
 
         <Table striped bordered hover className="section-main-cart__table">
         <tbody>
-        {items.map(({image, title, price, amount, id}, i) => {
+        {items.map(({image, title, price, amount, id}, i) => {  
            return (
             <tr  className="section-main-cart__body-tr" key={`${title}-key`}>
                 <td className="section-main-cart__image-td"><img 
@@ -94,9 +127,10 @@ export default function SectionMainCart(){
         </div>
                <div className="section-main-cart__order">
                    <span className="section-main-cart__total">Total: {sum}$</span>
-                    <Button className="section-main-cart__next">Order</Button>
+                    <Button className="section-main-cart__next" onClick={orderHandler}>Order</Button>
                 </div>  
                 </section>
+       }
                 </PageBox>
     )
 }

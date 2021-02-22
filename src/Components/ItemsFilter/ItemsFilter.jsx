@@ -35,7 +35,7 @@ export default function ItemsFilter() {
         e.preventDefault();
             dispatch(changeCategory(category));
             dispatch(changeSort(sort));
-            dispatch(changePage(2));
+            dispatch(changePage(1));
     }
     
    
@@ -44,6 +44,7 @@ export default function ItemsFilter() {
     return (
         <div className="items-filter p-3 mb-5 bg-light">
             <form action="" className="items-filter__form" onSubmit={onSubmit}>
+            <div className="items-filter__left">
             <div className="items-filter__box">
                     <label className="items-filter__label">
                         Categories:
@@ -81,6 +82,7 @@ export default function ItemsFilter() {
                                 <option value="?sort=highest">highest price</option>
                             </select> 
                       </label>
+                  </div>
                   </div>
                   <ButtonGroup toggle className="items-filter__box">
                     <Button variant="secondary" type="submit">Start</Button>

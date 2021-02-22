@@ -5,4 +5,21 @@
         left: 0;
         top: 5.5rem;
     }
+    &__link{
+        padding: 0 .5rem;
+        color: #6c757d;
+        &:hover{
+            color:#007bff;
+            text-decoration: none;
+            transition: all .3s;
+        }
+    }
+    &__brand{
+        margin-right: 1rem;
+        transform: rotate(2deg);
+        font-size: 2rem;
+        &:hover{
+            text-decoration: none;
+        }
+    }
 }

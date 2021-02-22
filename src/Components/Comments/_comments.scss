@@ -22,6 +22,10 @@
        width: 10rem;
        background-color: chocolate;
        flex-shrink: 0;
+       @include respons(tab-port){
+        height: 3rem;
+        width: 3rem;
+     }
     }
     &__image{
         width: 100%;
@@ -37,6 +41,10 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem;
+      @include respons(tab-port){
+        flex-direction: column;
+        align-items: flex-start;
+     }
     }
 
     &__name, &__date{
@@ -55,6 +63,9 @@
       height: 6rem;
       overflow: hidden;
       word-break: break-all;
+      @include respons(tab-port){
+        overflow-y: scroll;
+     }
     }
     &__add-comments{
       position: relative;

@@ -4,7 +4,7 @@ import { Google, Twitter, Instagram, Facebook, Telegram} from 'react-bootstrap-i
 export default function Footer() {
     return (
         <footer className="footer">
-            <div className="footer__place"  data-aos="fade-up" data-aos-offset="-15">
+            <div className="footer__place">
             <div className="footer__top bg-dark">
                 <div className="footer__medias">
                     <a href="#"><Google/></a>

@@ -18,7 +18,8 @@ export default function Field({name, type, fn, required, value}) {
                  placeholder={name}
                  onChange={fn} 
                  required={required} 
-                 value={value}/>
+                 value={value}
+                 name={name.trim().replace(/\s/g, "-")}/>
         </Form.Group>
     )
 }

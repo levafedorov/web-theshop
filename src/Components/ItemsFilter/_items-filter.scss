@@ -2,9 +2,17 @@
     color:rgba(0, 0, 0, 0.438);
     box-shadow: 0 0 .5rem 0px rgba(black, .5);
 
+    &__left{
+        display: flex;
+        @include respons(tab-port){
+           flex-direction: column;
+        }
+    }
+     
     &__form{
         display: flex;
         justify-content: space-between;
+        align-items: center;
         flex-wrap: wrap;
     }
     
@@ -25,7 +33,7 @@
     }
 
     &__label{
-        margin-left:1rem;
+        margin:0;
     }
 
     &__range{

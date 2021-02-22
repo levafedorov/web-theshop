@@ -11,6 +11,9 @@
         box-shadow: 0 0 .5rem 0px rgba(black, .5);
         position: relative;
         padding-bottom: 6rem;
+        @include respons(tab-port){
+            grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+        }
     }
 
    &__more-btn{

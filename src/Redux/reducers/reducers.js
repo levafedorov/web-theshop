@@ -109,7 +109,7 @@ const initialCart = null;
 
 const cartReducer = (state = initialCart, action) => {
      switch(action.type){
-       case "ADD_ITEM_TO_CART":
+       case "ADD_ITEMS_TO_CART":
            return{
               ...action.payload
            }

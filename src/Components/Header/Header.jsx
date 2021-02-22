@@ -6,6 +6,7 @@ import {regToggler, unLogged, login as sendToLogin} from "../../Redux/actions/it
 import Login from "./Login";
 import Logout from "./Logout";
 import ErrorMessage from "../Error/ErrorMessage";
+import {Link} from "react-router-dom";
 
 export default function Header() {
     const dispatch = useDispatch();
@@ -75,13 +76,13 @@ export default function Header() {
     
     return (
         <Navbar bg="light" variant="light" expand="lg" className="header">
-            <Navbar.Brand href="/"><h1 className="text-primary">The Shop</h1></Navbar.Brand>
+            <Link to="/" className="header__brand">The Shop</Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
              <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/card">Features</Nav.Link>
-              <Nav.Link href="#pricing">Pricing</Nav.Link>
+              <Link to="/aboutus" className="header__link">About us</Link>
+              <Link to="/contacts" className="header__link">Contacts</Link>
+              <Link to="/cart" className="header__link text-info">Cart</Link>
             </Nav>
              {displayed}
             </Navbar.Collapse>

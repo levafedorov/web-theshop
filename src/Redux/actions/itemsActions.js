@@ -1,7 +1,7 @@
 
 export function getSomeItems(category="", sort="?sort=asc", page=1){
 
-    let url = `https://fakestoreapi.com/products${category}${sort}&limit=${3 * page}`;
+    let url = `https://fakestoreapi.com/products${category}${sort}&limit=${6 * page}`;
     return dispatch => {
         fetch(url)
         .then(
@@ -105,7 +105,7 @@ export const regToggler = () => {
 
 export const addItemToCart = (item) => {
    return {
-     type: "ADD_ITEM_TO_CART",
+     type: "ADD_ITEMS_TO_CART",
      payload: item 
    }
 }

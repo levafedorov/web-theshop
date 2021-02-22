@@ -1,0 +1,18 @@
+
+.main-page .carousel{      
+    &-item{
+        height: 35rem;    
+        @include respons(tab-port){
+            height: 20rem;
+        }
+    }
+    &-indicators{
+        bottom: auto I !important;
+        top:2rem !important; 
+    }
+    &__image{
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+}

@@ -1,18 +1,17 @@
 .main-page{
     min-height: 100vh;
     position: relative;
-    &__top{
-    }
     &__bottom{
         padding:40px 0;
         position: relative;
         z-index: 20;
         margin-top: -15rem;
-        // background-color: rgb(12, 12, 24);
-        background-image: linear-gradient(to top, white 85%, transparent 100%);
-        .item-place{
-            
+        @include respons(tab-port){
+            margin-top: 0;
+            padding:2rem 0;
         }
+        background-image: linear-gradient(to top, white 85%, transparent 100%);
+        
     }
 
 }
@@ -20,13 +19,3 @@
 
 //vendor
 
-
-.main-page .carousel{      
-    &-item{
-        height: 35rem;    
-    }
-    &-indicators{
-        bottom: auto I !important;
-        top:2rem !important; 
-    }
-}

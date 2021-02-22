@@ -4,8 +4,6 @@ import {addItemToCart} from "../../Redux/actions/itemsActions";
 export default function AddToCartHOC(props){
 
         const dispatch = useDispatch();
-         
-        console.log(props);
 
         const addToCartHandler = e => {
           const {title, price, description, image, id} = props;

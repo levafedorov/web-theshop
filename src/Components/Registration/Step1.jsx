@@ -3,29 +3,20 @@ import {Form, Button} from "react-bootstrap";
 import Field from "./Field";
 import FieldCountry from "./FieldCountry";
 import ButtonsBottom from  "../Layout/ButtonsBottom/ButtonsBottom";
-import {numberInput} from "../../functions/functions";
+
 
 export default function Step1({data, nextStep}) {
 
-
-
- 
-
-
    const evHandler = fn => ({target:{value}}) => fn(value); 
    const {email, fullName, company, adress, postCode, town, state, province} = data;
-
-   
 
    const submitHandler = e => {
         e.preventDefault(); 
         nextStep();  
    } 
 
-   
    const restPostCode = ({target:{value}}) => {
-      const output = numberInput(value);
-      postCode.setPostCode(output);
+      if(+value >= 0) postCode.setPostCode(value);
   } 
 
     return (

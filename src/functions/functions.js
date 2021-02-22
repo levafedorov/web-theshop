@@ -18,9 +18,10 @@ export const numberInput = (str) => {
          output = str;
         if(output.length > 1 && output[0] === "0"){
             output =  [...output];
-            output.shift();     
+            output.shift();  
             output = output.join("");
         }
+        
              return output;
      }
 }

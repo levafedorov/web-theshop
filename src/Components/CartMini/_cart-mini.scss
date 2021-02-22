@@ -7,6 +7,9 @@
     transition: all .3s;
     border-radius: 3px;
     box-shadow: 0 0 .3rem rgba(black, .5);
+    @include respons(tab-port){
+        top: 16rem;
+    }
 
     &__switch-off{
         box-shadow: 0 0 .3rem rgba(black, .5);

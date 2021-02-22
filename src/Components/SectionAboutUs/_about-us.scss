@@ -1,0 +1,64 @@
+.about-us{
+padding: 5rem 0;
+@include respons(tab-port){
+  padding: 0;
+}
+
+&__image-place{
+    width: 100%;
+    height: 20rem;
+    background-image: url("https://informatics.sourceweb.ag/wp-content/uploads/2018/02/about-us.png"); 
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    @include respons(tab-port){
+      height: 15rem;
+    }
+}
+&__text-place{
+
+}
+&__article{
+  padding: .5rem;
+  box-shadow: 0 0 .3rem rgba(black, .5);
+  margin-top:1.5rem;
+  margin-bottom: 1.5rem;
+}
+&__h2{
+  margin-bottom: 3rem;
+  color: #007bff;
+}
+&__p{
+
+}
+&__images-box{
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  @include respons(tab-port){
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+}
+&__image-box{
+  width: 20rem;
+  height: 20rem;
+  @include respons(tab-port){
+    margin: 1rem 0;
+  }
+  &:not(:first-child){
+      margin-left: 1rem;
+      @include respons(tab-port){
+        margin-left:0;
+      }
+  }
+}
+&__image{
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   object-position: center;
+}
+
+}

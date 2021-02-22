@@ -4,6 +4,12 @@
         @include bottomBar();
         padding-left: 20px;
         padding-right: 20px;
+       .btn{
+        @include respons(tab-port){
+            font-size: .8rem;
+        }
+    
+       }
     }
 
     &__image{

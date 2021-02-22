@@ -2,11 +2,13 @@
     display: flex;
     justify-content: center;
     &__central-box{
-        margin: 5rem 0;
+        margin: 8rem 0;
         flex-basis:60rem;
         height: 50rem;
         box-shadow: 0 0 .5rem 0 rgba(black, .5);
-       
+        @include respons(tab-port){
+            margin: 4rem 0;
+          } 
 
     }
     &__content{

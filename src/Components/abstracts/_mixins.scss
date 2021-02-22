@@ -25,3 +25,13 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+//Responsive
+
+@mixin respons($device){
+   @if($device == tab-port){
+       @media(max-width: 50em){      //800px
+           @content
+       }            
+   }
+}

@@ -1,0 +1,8 @@
+.not-found{
+    height: 80rem;
+    position: relative;
+    &__header{
+      position: absolute;
+      @include centerer();
+    }
+}
